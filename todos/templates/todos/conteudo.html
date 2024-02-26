@@ -1,0 +1,26 @@
+{% extends 'todos/layout.html' %}
+
+{% block sidebar_content %}{% endblock %}
+
+{% block card_deck %}
+   <div class="col-md-12" id="conteudo{{ conteudo.pk }}">
+      <div class="card my-4 border" style="height: 100%;">
+        <img src="{{ conteudo.image.url }}" class="card-img-top" alt="{{ conteudo.title }}" style="height: 100%; object-fit: cover;">
+         <div class="card-body d-flex flex-column justify-content-between">
+            <div class="text-center">
+               <h3 class="card-title text-center mb-3">{{ conteudo.title }}</h3>
+               <p class="card-text text-center mb-4" style="text-align: justify;">{{ conteudo.summary|safe }}</p>
+            </div>
+
+            <div class="text-center">
+               <p class="card-author mb-0">Autor: {{ conteudo.author }}</p>
+               <p class="card-date mb-0">Criado em: {{ conteudo.created_at|date:'d, M Y' }}</p>
+               <a href="{{ conteudo.site_link }}" class="btn btn-info" target="_blank">Acesse</a>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock %}
+
+
+

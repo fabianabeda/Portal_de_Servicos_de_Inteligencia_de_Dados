@@ -1,0 +1,78 @@
+{% extends 'todos/layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <div class="container" >
+    <div class="card text-center" style="background-color: white; max-width:600px; margin: 0 auto; height: 300px;">
+      <div class="card-body">
+        <form action="." method="post">
+          <h1 class="h3 mb-3 font-weight-normal">Bem-vindo ao seu Portal!</h1>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="checkbox mb-3">
+            <label>
+              <input value="remember-me" type="checkbox"> Lembrar-me
+            </label>
+          </div>
+
+          <button class="btn btn-lg btn-purple btn-block" type="submit">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .form-signin {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .btn-purple {
+    background-color: #802494;
+    color: white;
+  }
+</style>
+{% endblock %}

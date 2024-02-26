@@ -1,0 +1,37 @@
+{% extends 'todos/layout.html' %}
+
+{% block sidebar_content %}{% endblock %}
+
+{% block card_deck %}
+   {% for postagem in posts|slice:":10" %}
+      <div class="col-md-4 mb-1" style="width: 21rem; height: 30rem">
+         <div class="card border" style="height: 100%; margin-top: 40px; font-size: 15px;">
+            <img src="{{ postagem.image.url }}" class="card-img-top equal-image" alt="{{ postagem.title }}" style="max-height: 200px;">
+            <div class="card-body d-flex flex-column justify-content-between">
+               <div class="text-center">
+                  <h3 class="card-title text-center mb-3">{{ postagem.title }}</h3>
+                  <p class="card-text text-center mb-4">{{ postagem.summary|truncatechars:100|safe }}...</p>
+               </div>
+               <div class="text-center card-details" style="height: 100px;"> <!-- Altura fixa ajustável conforme necessário -->
+                  <p class="card-author mb-0">{{ postagem.author }}</p>
+                  <p class="card-update mb-0">Última Atualização: {{ postagem.atualizacao|date:'d, M Y' }}</p>
+                  <p class="card-version mb-0">Versão: {{ postagem.versao }}</p>
+               </div>
+               <div class="text-center">
+                  <a href="{% url 'todos:todos_conteudos' postagem.id %}" class="btn btn-warning mr-2">ACESSE</a>
+                  <a href="/posts/{{ postagem.pk }}" class="btn btn-warning2 mr-2">SAIBA MAIS</a>
+               </div>
+               <div id="postCollapse{{ postagem.pk }}" class="collapse">
+                  <p class="card-text text-center">{{ postagem.content|safe }}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   {% endfor %}
+{% endblock %}
+   <style>
+      .equal-image {
+         width: 100%;
+         object-fit: cover;
+      }
+   </style>

@@ -1,0 +1,48 @@
+{% extends 'todos/layout.html' %}
+
+{% block sidebar_content %}{% endblock %}
+
+{% block card_deck %}
+   <div class="row no-gutters">
+      {% for conteudo in conteudos %}
+         <div class="col-md-12 mb-6">
+            <div class="card mb-6 card_focus" style="height: 26vh; margin-top: 40px; font-size: 13px;">
+               <div class="row no-gutters">
+                  <div class="col-md-4">
+                     <img src="{{ conteudo.image.url }}" class="card-img" alt="{{ conteudo.title }}" style="max-height: 165px; object-fit: fill;">
+                  </div>
+                  <div class="col-md-4">
+                     <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="text-center">
+                           <h3 class="card-title-sm text-center mb-4">{{ conteudo.title }}</h3>
+                           <p class="card-text text-justify mb-4" >{{ conteudo.summary|safe }}</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-4 d-flex align-items-center">
+                     <div class="card-body text-center">
+                        <a href="{{ conteudo.site_link }}" class="btn btn-info">Acesse</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      {% endfor %}
+   </div>
+   <style>
+      .card {
+         margin: 10px; /* Adicione margens conforme necessário */
+      }
+
+      .btn {
+         background-color: #800080; /* Código de cor roxa */
+         color: #fff; /* Cor do texto branco */
+      }
+
+      .card-title-sm {
+         font-size: 20px; /* Ajuste o tamanho da fonte conforme necessário */
+      }
+   </style>
+{% endblock %}
+
+
