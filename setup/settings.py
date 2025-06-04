@@ -97,13 +97,14 @@ WSGI_APPLICATION = "setup.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'PortalServicos',
-        'USER': 'postgres',
-        'PASSWORD': '......',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': config('POSTGRES_DB', default='PortalServicos'),
+        'USER': config('POSTGRES_USER', default='postgres'),
+        'PASSWORD': config('POSTGRES_PASSWORD', default='senha123'),
+        'HOST': config('POSTGRES_HOST', default='localhost'),
+        'PORT': config('POSTGRES_PORT', default='5432'),
     }
 }
+
 
 
 # Password validation
