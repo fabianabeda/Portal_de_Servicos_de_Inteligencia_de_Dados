@@ -74,8 +74,8 @@ ROOT_URLCONF = "setup.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "BACKEND": "django.template.backends.django.DjangoTemplates", 
+        'DIRS': [BASE_DIR / 'todos' / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -158,8 +158,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # settings.py
-LOGIN_REDIRECT_URL = 'todos:home'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'todos:home'  # após login vai para home
+LOGOUT_REDIRECT_URL = 'todos:login'  # após logout vai para login
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
