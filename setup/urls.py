@@ -6,8 +6,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
+app_name = 'todos'
+
 urlpatterns = [
-    path("", include('todos.urls')),
+    path('', include('todos.urls', namespace='todos')),
     path("admin/", admin.site.urls),
     path('account/', include('account.urls')),
     path('account/', include('django.contrib.auth.urls')),
