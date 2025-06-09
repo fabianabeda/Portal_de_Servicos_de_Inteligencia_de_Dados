@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: portal-de-servicos
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn portal_de_servicos_de_inteligencia_de_dados.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        value: sua_chave_super_secreta
+      - key: ALLOWED_HOSTS
+        value: portal-de-servicos-de-inteligencia-de.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nome-do-banco
+          property: connectionString
