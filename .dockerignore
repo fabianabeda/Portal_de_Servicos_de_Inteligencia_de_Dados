@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+*.db
+*.sqlite3
+*.csv
+*.xlsx
+.git/
+node_modules/
+*.tar.gz
